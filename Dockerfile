@@ -26,7 +26,7 @@ ADD ./replace-hostname /opt/replace-hostname
 ADD ./hbase-server /opt/hbase-server
 
 ADD ./hbase-create.hbase /opt/
-RUN /opt/hbase-server; sleep 10; hbase shell /opt/hbase-create.hbase; hbase master stop 2>&1
+RUN hbase master start; sleep 10; hbase shell /opt/hbase-create.hbase; hbase master stop 2>&1
 # REST API
 # REST Web UI at :8085/rest.jsp
 # Thrift API
@@ -35,5 +35,4 @@ RUN /opt/hbase-server; sleep 10; hbase shell /opt/hbase-create.hbase; hbase mast
 # HBase Master web UI at :16010/master-status;  ZK at :16010/zk.jsp
 EXPOSE 8080 8085 9090 9095 2181 16010
 
-ENTRYPOINT hbase master start 2>&1 | tee $logs_dir/hbase-master.log
-#CMD ["/opt/hbase-server"]
+CMD ["/opt/hbase-server"]
