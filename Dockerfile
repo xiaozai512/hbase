@@ -25,6 +25,8 @@ ADD ./replace-hostname /opt/replace-hostname
 
 ADD ./hbase-server /opt/hbase-server
 
+ADD ./hbase-create.hbase /opt/
+
 # REST API
 EXPOSE 8080
 # REST Web UI at :8085/rest.jsp
@@ -38,4 +40,4 @@ EXPOSE 2181
 # HBase Master web UI at :16010/master-status;  ZK at :16010/zk.jsp
 EXPOSE 16010
 
-CMD ["/opt/hbase-server"]
+CMD ["/opt/hbase-server","hbase shell /opt/hbase-create.hbase"]
