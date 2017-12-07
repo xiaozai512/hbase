@@ -34,5 +34,5 @@ ADD ./hbase-create.hbase /opt/
 # HBase's Embedded zookeeper cluster
 # HBase Master web UI at :16010/master-status;  ZK at :16010/zk.jsp
 EXPOSE 8080 8085 9090 9095 2181 16010
-
-CMD ["/opt/hbase-server"]
+ENTRYPOINT ["/opt/hbase-server"]
+CMD ["hbase shell /opt/hbase-create.hbase"]
