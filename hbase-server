@@ -26,4 +26,4 @@ echo "hbase master start logging to $logs_dir/hbase-master.log"
 hbase master start > $logs_dir/hbase-master.log 2>&1 & 
 
 echo "hbase db initialization"
-exec sleep 10 | hbase shell /opt/hbase-create.hbase >> $logs_dir/hbase-master.log | tee $logs_dir/hbase-master.log
+exec sleep 1.5m | hbase shell /opt/hbase-create.hbase >> $logs_dir/hbase-master.log | tee $logs_dir/hbase-master.log
