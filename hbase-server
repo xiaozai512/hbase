@@ -23,7 +23,7 @@ hbase rest start > $logs_dir/hbase-rest.log 2>&1 &
 # Master server (Foreground) that also starts the region server
 # Ports: Master: 16000 API, 16010 UI; 2181 ZK;  Region: 16020 API, 16030 UI
 echo "hbase master start logging to $logs_dir/hbase-master.log"
-hbase master start > $logs_dir/hbase-master.log 2>&1 & | sleep 10
+hbase master start > $logs_dir/hbase-master.log 2>&1 & 
 
 echo "hbase db initialization"
-exec hbase shell /opt/hbase-create.hbase >> $logs_dir/hbase-master.log | tee $logs_dir/hbase-master.log
+exec sleep 10 | hbase shell /opt/hbase-create.hbase >> $logs_dir/hbase-master.log | tee $logs_dir/hbase-master.log
