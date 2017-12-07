@@ -26,7 +26,7 @@ ADD ./replace-hostname /opt/replace-hostname
 ADD ./hbase-server /opt/hbase-server
 
 ADD ./hbase-create.hbase /opt/
-RUN hbase master start; sleep 10; hbase shell /opt/hbase-create.hbase; hbase master stop 2>&1
+
 # REST API
 # REST Web UI at :8085/rest.jsp
 # Thrift API
