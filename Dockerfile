@@ -20,9 +20,10 @@ ADD ./hbase-site.xml /opt/hbase/conf/hbase-site.xml
 ADD ./zoo.cfg /opt/hbase/conf/zoo.cfg
 ADD ./replace-hostname /opt/replace-hostname
 ADD ./hbase-server /opt/hbase-server
+ADD ./hbase-start /opt/hbase-start
 ADD ./hbase-create.hbase /opt/
 
-EXPOSE 8080 8085 9090 9095 2181 16010
+RUN hbase master start | sleep 10 | hbase shell /opt/hbase-create.hbase | hbase master stop
 
-ENTRYPOINT ["/opt/hbase-server"]
-CMD ["hbase shell /opt/hbase-create.hbase"]
+EXPOSE 8080 8085 9090 9095 2181 16010
+CMD ["/opt/hbase-start"]
